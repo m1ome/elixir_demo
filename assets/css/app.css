@@ -1,0 +1,30 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+
+.stats .col {
+    float: left;
+    width: 50%;
+}
+
+.stats h1 {
+    font-size: 24px;
+}
+
+.stats input {
+    width: 80%;
+}
+
+.stats .reset {
+    width: 100%;
+}
+
+.separator {
+    width: 100%;
+}
+
+.charts .col {
+    float: left;
+    width: 49%;
+    margin-right: 10px;
+}

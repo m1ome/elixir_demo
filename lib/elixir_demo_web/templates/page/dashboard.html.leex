@@ -1,0 +1,48 @@
+<h1>Basic stats</h1>
+
+<div class="stats">
+    <div class="col">
+        <h1>Jobs (<b><%=@memory %> MB</b>)</h1>
+        <%= form_for(@jobs, "", ["phx-submit": "change_jobs", as: :data], fn f -> %>
+            <%= number_input(f, :value, autofocus: true) %>
+        <% end) %>        
+    </div>
+    
+    <div class="col">
+        <h1>Schedulers</h1>
+        <%= form_for(@schedulers, "", ["phx-submit": "change_schedulers", as: :data], fn f -> %>
+            <%= number_input(f, :value, autofocus: true) %>
+        <% end) %>        
+    </div>
+
+    <div class="separator"></div>
+    <input type="button" value="reset" phx-click="reset" class="reset"/>
+</div>
+
+<br><br>
+
+<h1>Graphs</h1>
+
+<div class="charts">
+    <div class="col">
+        <%= render ElixirDemoWeb.PageView, "graph.html", graph: @jobs_graph, title: "successful jobs/sec" %>
+    </div>
+    <div class="col">
+        <%= render ElixirDemoWeb.PageView, "graph.html", graph: @scheduler_graph, title: "scheduler usage" %>
+    </div>
+</div>
+
+<div class="calc">
+    <h1>Calculator</h1>
+    <%= form_for(@number, "", ["phx-submit": "calculate", as: :data], fn f -> %>
+        <%= number_input(f, :value, autofocus: true) %>
+    <% end) %>     
+
+    <div>
+        <%= for operation <- @operations do %>
+            <div>∑(1..<%= operation.input %>) = <%= operation.result %></div>
+        <% end %>
+    </div>       
+</div>
+
+<br><br>
